@@ -14,11 +14,10 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var recommendationLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    var bmi: BMICalculator?
+    var bmi: BMIResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateView()
     }
     
@@ -28,9 +27,9 @@ class ResultViewController: UIViewController {
     
     func updateView() {
         if let b = bmi {
-            backgroundImage.backgroundColor = b.color()
-            bmiLabel.text = String(format: "%.1f", b.bmi())
-            recommendationLabel.text = b.recommendation()
+            backgroundImage.backgroundColor = b.color
+            bmiLabel.text = String(format: "%.1f", b.value)
+            recommendationLabel.text = b.recommendation
         }
     }
 }

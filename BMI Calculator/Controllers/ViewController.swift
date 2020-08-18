@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let resultVC: ResultViewController = segue.destination as? ResultViewController {
-            resultVC.bmi = bmi
+            resultVC.bmi = bmi.calculate()
         }
     }
     
