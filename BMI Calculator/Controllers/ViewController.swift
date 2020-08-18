@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     var height: Float = 1.5
     var weight: Float = 50
+    var bmi: Float = 0.0
+    var recommendation: String = "Do nothing"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateBMI(_ sender: UIButton) {
-        let bmi = weight / (pow(height, 2))
-        print(bmi)
+        bmi = (weight / (pow(height, 2)))
+        
+        switch bmi {
+        case ...10:
+            recommendation = "Please eat more"
+        case 11...29:
+            recommendation = "Your are doing fine"
+        case 30...:
+            recommendation = "Please stop eating"
+        default:
+            recommendation = "I dont know what to do"
+        }
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultVC: ResultViewController = segue.destination as? ResultViewController {
+            resultVC.bmi = String(format: "%.1f", bmi)
+            resultVC.recommendation = recommendation
+        }
     }
 }
 
