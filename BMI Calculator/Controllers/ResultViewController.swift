@@ -12,9 +12,11 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var recommendationLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var bmi: String?
     var recommendation: String?
+    var bgColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class ResultViewController: UIViewController {
         
         bmiLabel.text = bmi ?? "Unknown"
         recommendationLabel.text = recommendation ?? "Unknown"
+        backgroundImage.backgroundColor = bgColor
     }
     
     @IBAction func recalculate(_ sender: UIButton) {

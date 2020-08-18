@@ -205,6 +205,7 @@
                         <viewLayoutGuide key="safeArea" id="wMZ-LG-Y4P"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="r83-N3-Ash" id="Qx2-sh-JU0"/>
                         <outlet property="bmiLabel" destination="VU9-2W-Sd5" id="ckN-tl-lPJ"/>
                         <outlet property="recommendationLabel" destination="9IV-CT-mxw" id="m9H-ng-ho3"/>
                     </connections>

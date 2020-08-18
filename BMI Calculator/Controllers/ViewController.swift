@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var weight: Float = 50
     var bmi: Float = 0.0
     var recommendation: String = "Do nothing"
+    var resultBGColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +39,13 @@ class ViewController: UIViewController {
         switch bmi {
         case ...10:
             recommendation = "Please eat more"
+            resultBGColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         case 11...29:
             recommendation = "Your are doing fine"
+            resultBGColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         case 30...:
             recommendation = "Please stop eating"
+            resultBGColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         default:
             recommendation = "I dont know what to do"
         }
@@ -53,6 +57,7 @@ class ViewController: UIViewController {
         if let resultVC: ResultViewController = segue.destination as? ResultViewController {
             resultVC.bmi = String(format: "%.1f", bmi)
             resultVC.recommendation = recommendation
+            resultVC.bgColor = resultBGColor
         }
     }
 }
