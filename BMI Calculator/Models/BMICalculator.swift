@@ -11,8 +11,10 @@ import Foundation
 
 class BMICalculator {
     
-    private let normalMin: Float = 10.0
-    private let normalMax: Float = 30.0
+    private let healthy: Float = 18.0
+    private let overweight: Float = 25.0
+    private let obese: Float = 30.0
+    private let extremelyObese: Float = 40.0
     
     var height: Float = 1.5
     var weight: Float = 1.0
@@ -21,14 +23,16 @@ class BMICalculator {
         let v = Float((weight / (pow(height, 2))))
         
         switch v {
-        case ...normalMin:
-            return BMIResult(color: #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), recommendation: "Please eat more", value: v)
-        case normalMin...normalMax:
-            return BMIResult(color: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1), recommendation: "Your are doing fine", value: v)
-        case normalMax...:
-            return BMIResult(color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), recommendation: "Please stop eating", value: v)
+        case ...healthy:
+            return BMIResult(color: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), recommendation: "Please eat more", value: v)
+        case healthy...overweight:
+            return BMIResult(color: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), recommendation: "Your are doing fine", value: v)
+        case overweight...obese:
+            return BMIResult(color: #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), recommendation: "Dial down on your food and exercise", value: v)
+        case obese...extremelyObese:
+            return BMIResult(color: #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), recommendation: "Please consult your doctor", value: v)
         default:
-            return BMIResult(color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), recommendation: "I dont know what to do", value: v)
+            return BMIResult(color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), recommendation: "You are hopeless", value: v)
         }
     }
 
